@@ -5,14 +5,14 @@ window.addEventListener("load", function() {
 	console.log("Good job opening the window")
     video.autoplay = false
 	video.loop = false	
-
-	let volume = document.querySelector("video").volume
-	document.querySelector("#volume").innerHTML = volume
 })
 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play()
+	let volume = document.querySelector("video").volume
+	volume *= 100
+	document.querySelector("#volume").innerHTML = volume+"%"
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -60,7 +60,11 @@ let volume = document.querySelector("#slider")
 
 volume.addEventListener("change", function(e) {
 	video.volume = e.currentTarget.value / 100;
-	document.querySelector("#volume").innerHTML = video.volume
+
+	// Need to update this to correct format
+	let volume = video.volume 
+	volume *= 100
+	document.querySelector("#volume").innerHTML = volume +"%"
 })
 
 document.querySelector("#vintage").addEventListener("click", function() {
